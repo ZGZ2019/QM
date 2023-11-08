@@ -9,6 +9,7 @@
 		"applicationVersion": {
 			"version": "1.0.0"
 		},
+
 		"dataSources": {
 			"ZQM_SRV": {
 				"uri": "/sap/opu/odata/sap/ZQM_SRV/",
