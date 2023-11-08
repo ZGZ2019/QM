@@ -1,0 +1,141 @@
+<mvc:View xmlns="sap.m" xmlns:mvc="sap.ui.core.mvc" xmlns:semantic="sap.f.semantic" xmlns:footerbar="sap.ushell.ui.footerbar" xmlns:core="sap.ui.core" xmlns:fb="sap.ui.comp.filterbar" controllerName="egston.qm.ma.controller.Worklist">
+	<semantic:SemanticPage id="page" headerPinnable="false" toggleHeaderOnTitleClick="false" showFooter="true">
+		<semantic:titleHeading>
+			<Title text="{i18n>worklistTitle}"/>
+		</semantic:titleHeading>
+		<semantic:content>
+			<VBox>
+				<fb:FilterBar id="filter" reset="onReset" search="onSearch" showRestoreButton="false" showClearButton="false" showFilterConfiguration="false">
+					<fb:filterGroupItems>
+						<fb:FilterGroupItem groupName="G1" groupTitle="" name="A" label="{i18n>AufnrLabel}" labelTooltip="Tooltip GroupItem Example" visibleInFilterBar="true" mandatory="true">
+							<fb:control>
+								<Input id="Aufnr" type="Text"/>
+							</fb:control>
+						</fb:FilterGroupItem>
+						<fb:FilterGroupItem groupName="G1" groupTitle="" name="B" label="{i18n>VornrLabel}" visibleInFilterBar="true" mandatory="true">
+							<fb:control>
+								<Input id="Vornr" type="Text"/>
+							</fb:control>
+						</fb:FilterGroupItem>
+						<fb:FilterGroupItem groupName="G1" groupTitle="" name="C" label="{i18n>ScanerLabel}" visibleInFilterBar="{worklistView>/showBarcode}">
+							<fb:control>
+								<Button text="{i18n>ScanButton}" icon="sap-icon://bar-code" press="onScanPress" width="auto"/>
+							</fb:control>
+						</fb:FilterGroupItem>
+					</fb:filterGroupItems>
+				</fb:FilterBar>
+				<ObjectHeader visible="{worklistView>/showDetails}" id="details" backgroundDesign="Translucent" title="{Material} - {Matktx}" titleLevel="Auto" iconDensityAware="false" intro="{Fertvorktx}">
+					<attributes>
+						<ObjectAttribute text="{Matktx}" id="__attribute10" title="{i18n>AttrMaktx}" visible="false"/>
+						<ObjectAttribute text="{Fertvorktx}" id="__attribute11" title="{i18n>AttrVorgang}" visible="false"/>
+						<ObjectAttribute text="{Arbplwerk}" id="__attribute12" title="{i18n>AttrWerk}"/>
+					</attributes>
+				</ObjectHeader>
+				<Table id="table" visible="{worklistView>/showDetails}" width="auto" items="{worklistView>/notifications}" busyIndicatorDelay="{worklistView>/tableBusyDelay}" delete="onNotificationDelete">
+					<headerToolbar>
+						<Toolbar>
+							<Title id="tableHeader" text="{worklistView>/worklistTableTitle}"/>
+							<ToolbarSpacer/>
+							<Button id="__button2" icon="sap-icon://add" width="auto" press="onAddNotification"/>
+							<Button width="auto" id="__button3" icon="sap-icon://delete" press="onToDeleteNotification"/>
+						</Toolbar>
+					</headerToolbar>
+					<columns>
+						<Column id="__column0" width="5em">
+							<Text text="{i18n>tableNummer}"/>
+						</Column>
+						<Column id="__column1">
+							<header>
+								<Text text="{i18n>tableText}"/>
+							</header>
+						</Column>
+						<Column>
+							<header>
+								<Text text="{i18n>tableLongText}"/>
+							</header>
+						</Column>
+						<Column id="__column2" width="13%">
+							<header>
+								<Text text="{i18n>tableFehlerOrt}"/>
+							</header>
+						</Column>
+						<Column id="__column7" width="auto" visible="false">
+							<header>
+								<Text text="{i18n>tableFehlerArtGroup}"/>
+							</header>
+						</Column>
+						<Column id="__column3" width="auto">
+							<header>
+								<Text text="{i18n>tableFehlerArt}"/>
+							</header>
+						</Column>
+						<Column id="__column4" width="4.5em">
+							<header>
+								<Text text="{i18n>tableFehlerAnz}"/>
+							</header>
+						</Column>
+						<Column id="__column5">
+							<header>
+								<Text text="{i18n>tableFehlerKlasse}"/>
+							</header>
+						</Column>
+						<Column id="__column6">
+							<header>
+								<Text text="{i18n>tablePhoto}"/>
+							</header>
+						</Column>
+					</columns>
+					<items>
+						<ColumnListItem press="onPress">
+							<cells>
+								<ObjectIdentifier title="{worklistView>Pos}"/>
+								<Input type="Text" value="{worklistView>Text}" maxLength="40"/>
+								<Input type="Text" value="{worklistView>LongText}"/>
+								<Select xmlns:sap.ui.core="sap.ui.core" id="__select0" selectedKey="{worklistView>Ort}" items="{ path: '/FehlerortSet' }">
+									<sap.ui.core:ListItem text="{Text}" key="{CodeGroup}|{Code}"/>
+								</Select>
+								
+								
+								<ComboBox showSecondaryValues="true" filterSecondaryValues="false" value="" selectedKey="{worklistView>ArtGroup}" items="{ path: '/FehlerartGroupSet' }" change="onArtGroupChange" visible="false">
+									<core:ListItem key="{CodeGroup}" text="{path: 'CodeGroup', formatter : '.formatter.CodeGroup' }" additionalText="{Text}"/>
+								</ComboBox>
+								<!--			<Select xmlns:sap.ui.core="sap.ui.core" selectedKey="{worklistView>ArtGroup}" items="{ path: '/FehlerartGroupSet' }"
+									change="onArtGroupChange">
+									<sap.ui.core:ListItem text="{Text}" key="{CodeGroup}"/>
+								</Select>
+								-->
+								
+								<ComboBox showSecondaryValues="true" filterSecondaryValues="false" value="" selectedKey="{worklistView>Art}" items="{ path: '/FehlerartSet'  }" change="onArtChange">
+									<core:ListItem key="{Code}" text="{Code}" additionalText="{Text}"/>
+								<customData>
+								    <core:CustomData id="__data38" key="CodeGroup" value="{CodeGroup}"/>
+								</customData>
+								</ComboBox>
+								
+								<!--	<Select xmlns:sap.ui.core="sap.ui.core" selectedKey="{worklistView>Art}" items="{ path: '/FehlerartSet' }">
+									<sap.ui.core:ListItem text="{Text}" key="{Code}"/>
+								</Select>-->
+								
+								<Input width="100%" id="__input2" type="Number" value="{worklistView>Anz}"/>
+								<Select xmlns:sap.ui.core="sap.ui.core" id="__select1" selectedKey="{worklistView>Klasse}" items="{ path: '/FehlerklasseSet' }">
+									<sap.ui.core:ListItem text="{Text}" key="{Fehlklasse}"/>
+								</Select>
+								<HBox>
+									<Button width="auto" visible="{worklistView>_showUpload}" icon="sap-icon://picture" press="onUploadPress"/>
+									<Button width="auto" visible="{worklistView>_showDelete}" icon="sap-icon://delete" press="onUploadDeletePress"/>
+								</HBox>
+							</cells>
+						</ColumnListItem>
+					</items>
+				</Table>
+				<core:HTML content="&lt;input type='file' id=&quot;pic-uploader&quot; /&gt;"/>
+			</VBox>
+		</semantic:content>
+		<semantic:positiveAction>
+			<semantic:PositiveAction text="{i18n>SaveButton}" press="onSave" visible="{worklistView>/showDetails}"/>
+		</semantic:positiveAction>
+		<semantic:negativeAction>
+			<semantic:NegativeAction text="{i18n>CancelButton}" press="onCancel" visible="{worklistView>/showDetails}"/>
+		</semantic:negativeAction>
+	</semantic:SemanticPage>
+</mvc:View>
