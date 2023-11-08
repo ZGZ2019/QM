@@ -20,6 +20,7 @@
 				}
 			}
 		},
+		
 		"sourceTemplate": {
 			"id": "servicecatalog.connectivityComponent",
 			"version": "0.0.0"
