@@ -26,6 +26,7 @@
 			"version": "0.0.0"
 		}
 	},
+	
 	"sap.ui": {
 		"technology": "UI5",
 		"icons": {
