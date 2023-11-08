@@ -208,11 +208,13 @@ sap.ui.define([
 			return {
 				Pos: "",
 				Text: "",
-				Ort: this.oNotifDefault.FoCodeGroup + "|" + this.oNotifDefault.Fehlerort,
+				Ort: "",
+				// Ort: this.oNotifDefault.FoCodeGroup + "|" + this.oNotifDefault.Fehlerort,
 				ArtGroup: "", //this.oNotifDefault.FehlerartGroup,
 				Art: "", //this.oNotifDefault.Fehlerart,
 				Anz: 1,
-				Klasse: this.oNotifDefault.Fehlerklasse,
+				Klasse: "",
+				// Klasse: this.oNotifDefault.Fehlerklasse,
 				oPhoto: null,
 				_showUpload: true,
 				_showDelete: false
