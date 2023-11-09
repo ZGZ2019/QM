@@ -1,0 +1,2 @@
+sap.ui.define(["egston/qm/ma/controller/BaseController"],function(e){"use strict";return e.extend("egston.qm.ma.controller.NotFound",{onLinkPressed:function(){this.getRouter().navTo("worklist")}})});
+//# sourceMappingURL=NotFound.controller.js.map

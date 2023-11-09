@@ -1,0 +1,26 @@
+# yaml-language-server: $schema=https://sap.github.io/ui5-tooling/schema/ui5.yaml.json
+
+specVersion: '3.1'
+metadata:
+  name: zqm_ma
+type: application
+builder:
+  resources:
+    excludes:
+      - /test/**
+      - /localService/**
+  customTasks:
+    - name: deploy-to-abap
+      afterTask: generateCachebusterInfo
+      configuration:
+        target:
+          url: http://devgw.pulseeng.com:8000
+          client: "100"
+          scp: true
+        app:
+          name: ZQM_MA
+          description: WO#XXXX QM App
+          package: ZODATA
+          transport: GWDK900366
+        exclude:
+          - /test/

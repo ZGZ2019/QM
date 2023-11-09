@@ -1,14 +1,28 @@
 {
-  "name": "zqm_ma",
-  "version": "1.0.0",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "author": "",
-  "license": "ISC",
-  "description": "",
-  "dependencies": {
-    "@sap/ux-ui5-tooling": "^1.11.3"
-  }
+    "name": "zqm_ma",
+    "version": "1.0.0",
+    "main": "index.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "deploy": "fiori deploy --config ui5-deploy.yaml",
+        "build": "ui5 build",
+        "undeploy": "fiori undeploy --config ui5-deploy.yaml",
+        "deploy-test": "npm run build && fiori deploy --config ui5-deploy.yaml --testMode true"
+    },
+    "author": "",
+    "license": "ISC",
+    "description": "",
+    "dependencies": {
+        "@sap/generator-fiori": "^1.11.3",
+        "@sap/ux-ui5-tooling": "^1.11.3"
+    },
+    "devDependencies": {
+        "rimraf": "^3.0.2",
+        "ui5-task-flatten-library": "0.2.5"
+    },
+    "ui5": {
+        "dependencies": [
+            "ui5-task-flatten-library"
+        ]
+    }
 }

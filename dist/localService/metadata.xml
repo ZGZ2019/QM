@@ -1,0 +1,92 @@
+<edmx:Edmx
+    xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx"
+    xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata"
+    xmlns:sap="http://www.sap.com/Protocols/SAPData" Version="1.0">
+    <edmx:DataServices m:DataServiceVersion="2.0">
+        <Schema
+            xmlns="http://schemas.microsoft.com/ado/2008/09/edm" Namespace="/SCC/PMMOB_GW_SRV" xml:lang="de" sap:schema-version="1 ">
+            <EntityType Name="MeasurementPoint" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Mdocm"/>
+                </Key>
+                <Property Name="Objid" Type="Edm.String" MaxLength="30" sap:label="PM Objekt" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="Point" Type="Edm.String" MaxLength="12" sap:label="Meßpunkt" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Mdocm" Type="Edm.String" Nullable="false" MaxLength="20" sap:label="Meßbeleg" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Psort" Type="Edm.String" MaxLength="20" sap:label="Meßposition" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Pttxt" Type="Edm.String" MaxLength="40" sap:label="Bezeichnung" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Rdtot" Type="Edm.String" MaxLength="22" sap:label="Meßw/GesamtzSt." sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Unitc" Type="Edm.String" MaxLength="6" sap:label="MerkmEinheit" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Erdat" Type="Edm.DateTime" Precision="0" sap:label="Datum" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Eruhr" Type="Edm.Time" Precision="0" sap:label="Feld vom Typ TIMS" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Readr" Type="Edm.String" MaxLength="12" sap:label="Ableser" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Mdtxt" Type="Edm.String" MaxLength="40" sap:label="Text" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="Catalog" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="NotifCode"/>
+                </Key>
+                <Property Name="NotifCode" Type="Edm.String" Nullable="false" MaxLength="4" sap:label="Codierung" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="NotifCodeText" Type="Edm.String" Nullable="false" MaxLength="40" sap:label="Kurztext Code" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="NotifCodeGroup" Type="Edm.String" Nullable="false" MaxLength="8" sap:label="Codegruppe" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="NotifCodeGroupText" Type="Edm.String" Nullable="false" MaxLength="40" sap:label="Kurztext" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="NotifCatalogType" Type="Edm.String" Nullable="false" MaxLength="1" sap:label="Katalogart" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="DummyCategIncl" Type="Edm.String" Nullable="false" MaxLength="1" sap:label="Dummyfunktion in der Laenge 1" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="Notif" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="EvQmnum"/>
+                </Key>
+                <Property Name="ObjectId" Type="Edm.String" Nullable="false" MaxLength="30" sap:label="PM Objekt" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Qmgrp" Type="Edm.String" Nullable="false" MaxLength="8" sap:label="Codegruppe" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Qmcod" Type="Edm.String" Nullable="false" MaxLength="4" sap:label="Codierung" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Qmtxt" Type="Edm.String" Nullable="false" MaxLength="40" sap:label="Beschreibung" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Longtext" Type="Edm.String" Nullable="false" sap:label="EPM: String" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="EvQmnum" Type="Edm.String" Nullable="false" MaxLength="12" sap:label="Meldung" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="NotifAttach" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Qmnum"/>
+                    <PropertyRef Name="DocumentName"/>
+                </Key>
+                <Property Name="Qmnum" Type="Edm.String" Nullable="false" MaxLength="12" sap:label="Meldung" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="DocumentName" Type="Edm.String" Nullable="false" sap:label="EPM: String" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="DocumentType" Type="Edm.String" Nullable="false" sap:label="EPM: String" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="DocumentRaw" Type="Edm.String" Nullable="false" sap:label="EPM: String" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="ObjectInfo" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Fieldname"/>
+                    <PropertyRef Name="Objid"/>
+                </Key>
+                <Property Name="Fieldname" Type="Edm.String" Nullable="false" MaxLength="30" sap:label="Feldname" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Objid" Type="Edm.String" Nullable="false" MaxLength="30" sap:label="PM Objekt" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Field" Type="Edm.String" Nullable="false" MaxLength="30" sap:label="Feld" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Fieldval" Type="Edm.String" Nullable="false" MaxLength="100" sap:label="Feldwert" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="ObjectAttach" m:HasStream="true" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="DocumentId"/>
+                </Key>
+                <Property Name="DocumentMimeType" Type="Edm.String" Nullable="false" MaxLength="24" sap:label="Mime-Type" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="DocumentId" Type="Edm.String" Nullable="false" MaxLength="42" sap:label="Dokument-ID" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="DocumentRaw" Type="Edm.String" Nullable="false" sap:label="EPM: String" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="DocumentSize" Type="Edm.Int32" Nullable="false" sap:label="Zahl" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Objid" Type="Edm.String" Nullable="false" MaxLength="30" sap:label="PM Objekt" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="DocumentName" Type="Edm.String" Nullable="false" sap:label="EPM: String" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="DocumentType" Type="Edm.String" Nullable="false" sap:label="EPM: String" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <EntityContainer Name="/SCC/PMMOB_GW_SRV_Entities" m:IsDefaultEntityContainer="true" sap:supported-formats="atom json xlsx">
+                <EntitySet Name="MeasurementPointSet" EntityType="/SCC/PMMOB_GW_SRV.MeasurementPoint" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+                <EntitySet Name="CatalogSet" EntityType="/SCC/PMMOB_GW_SRV.Catalog" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+                <EntitySet Name="NotifSet" EntityType="/SCC/PMMOB_GW_SRV.Notif" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+                <EntitySet Name="NotifAttachSet" EntityType="/SCC/PMMOB_GW_SRV.NotifAttach" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+                <EntitySet Name="ObjectInfoSet" EntityType="/SCC/PMMOB_GW_SRV.ObjectInfo" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+                <EntitySet Name="ObjectAttachSet" EntityType="/SCC/PMMOB_GW_SRV.ObjectAttach" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+            </EntityContainer>
+            <atom:link
+                xmlns:atom="http://www.w3.org/2005/Atom" rel="self" href="./scc/PMMOB_GW_SRV/$metadata"/>
+                <atom:link
+                    xmlns:atom="http://www.w3.org/2005/Atom" rel="latest-version" href="./scc/PMMOB_GW_SRV/$metadata"/>
+                </Schema>
+            </edmx:DataServices>
+        </edmx:Edmx>

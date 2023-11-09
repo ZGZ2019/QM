@@ -9,4 +9,4 @@ server:
     configuration:
       backend:
       - path: /sap
-        url: https://devsalesforce.pulseeng.com:8001
+        url: http://devgw.pulseeng.com:8000

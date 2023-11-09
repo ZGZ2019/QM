@@ -1,0 +1,1 @@
+{"version":3,"file":"formatter.js","names":["sap","ui","define","numberUnit","sValue","parseFloat","toFixed","CodeGroup","slice","length"],"sources":["formatter-dbg.js"],"mappings":"AAAAA,IAAIC,GAAGC,OAAO,GACT,WACH,aAEA,MAAO,CAQNC,WAAa,SAAUC,GACtB,IAAKA,EAAQ,CACZ,MAAO,EACR,CACA,OAAOC,WAAWD,GAAQE,QAAQ,EACnC,EAEAC,UAAY,SAASH,GACpB,OAAOA,EAAOI,OAAO,EAAGJ,EAAOK,OAChC,EAIF"}
