@@ -1,0 +1,22 @@
+@github
+->Profile ->Settings -> Developer setting -> Personal access tokens-> Tokens(classic)
+(https://github.com/settings/tokens)
+
+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
+https://github.com/ZGZ2019/QM.git
+
+
+@BTP
+git branch -M main
+git remote add origin https://github.com/ZGZ2019/UI508.git
+git push -u origin main
+
+
+
+@VS_Code
+git init
+git branch -M main
+git remote add origin https://github.com/ZGZ2019/UI508.git
+git push -u origin main
+
+
