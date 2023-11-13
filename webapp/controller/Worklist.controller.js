@@ -15,6 +15,8 @@ sap.ui.define([
 		/* =========================================================== */
 		onInit: function() {
 			this.oFilter = this.byId("filter");
+			
+			
 			this.oTable = this.byId("table");
 			this.oViewModel = new JSONModel({
 				worklistTableTitle: this.getResourceBundle().getText("worklistTableTitle"),
