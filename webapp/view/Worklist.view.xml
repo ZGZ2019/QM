@@ -7,7 +7,7 @@
 			<VBox>
 				<fb:FilterBar id="filter" reset="onReset" search="onSearch" showRestoreButton="false" showClearButton="false" showFilterConfiguration="false">
 					<fb:filterGroupItems>
-						<fb:FilterGroupItem groupName="G1" groupTitle="" name="A" label="{i18n>AufnrLabel}" labelTooltip="Tooltip GroupItem Example" visibleInFilterBar="true" mandatory="true">
+						<fb:FilterGroupItem groupName="G1" groupTitle="" name="A" label="{i18n>AufnrLabel}----" labelTooltip="Tooltip GroupItem Example" visibleInFilterBar="true" mandatory="true">
 							<fb:control>
 								<Input id="Aufnr" type="Text"/>
 							</fb:control>
